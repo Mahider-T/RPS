@@ -4,10 +4,11 @@
 
 function playerSelection() {
 
-    let choice = prompt("Enter you choice.");
-    while(choice != "rock" && choice != "paper" && choice != "scissor"){
-        alert("Wrong entry");
-        playerSelection();
+    let choice = prompt("Enter you choice.").toLowerCase();
+
+    if (choice != "rock" && choice != "paper" && choice != "scissor") {
+        alert("Wrong entry. Enter \"rock\" , \"paper\" or \"scissor\".")
+        return playerSelection();
     }
     return choice;
 }
@@ -17,7 +18,7 @@ function getComputerChoice(){
 
     if (computerSelection == 0) return "rock";
     else if(computerSelection == 1) return "paper";
-    else return "scissor";
+    else return "scissor";git 
 }
 
 
