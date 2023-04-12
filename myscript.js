@@ -4,7 +4,7 @@
 let computerScore = 0;
 let playerScore = 0;
 
-console.log(" This is a test for player score " + playerScore);
+//console.log(" This is a test for player score " + playerScore);
 
 function playerSelection() {
 
@@ -55,23 +55,24 @@ function game() {
     let winnerOfFive;
     let player;
     let computer;
-
+    let temporary;
     for (let i = 0; i <= 4; i++) {
         player = playerSelection();
         computer = getComputerChoice();
-        playRound(player, computer);
+        temporary = playRound(player, computer);
         console.log("Player is " + player + " and computer is " + computer);
-        //console.log(playRound(player, computer));
+        console.log(temporary);
         console.log(" " + playerScore + " " + computerScore);
     }
 
-   (playerScore > computerScore)? winnerOfFive = "Player ": winnerOfFive = "Computer";
+   (playerScore > computerScore)? winnerOfFive = "Player is the": (playerScore < computerScore) ? winnerOfFive = "Computer is the ": winnerOfFive = "Both are the ";
     console.log ("Computer = " + computerScore);
     console.log (" Player  = " + playerScore);
-    alert(`Player = ${playerScore} & Computer = ${computerScore}. ${winnerOfFive} is the winner!`); 
+    console.log (`Player = ${playerScore} & Computer = ${computerScore}. ${winnerOfFive} is the winner!`);
+    alert(`Player = ${playerScore} & Computer = ${computerScore}. ${winnerOfFive} winner!`); 
 }
 
 game();
-//console.log(playRound(playerSelection(), getComputerChoice()));
+
 
 
