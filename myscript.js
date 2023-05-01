@@ -6,23 +6,17 @@ let playerScore = 0;
 
 //console.log(" This is a test for player score " + playerScore);
 
-function playerSelection() {
-
-    let choice = prompt("Enter you choice.").toLowerCase();
-
-    if (choice != "rock" && choice != "paper" && choice != "scissor") {
-        alert("Wrong entry. Enter \"rock\" , \"paper\" or \"scissor\".")
-        return playerSelection();
-    }
-    return choice;
-}
 
 function getComputerChoice(){
     let computerSelection = Math.floor(Math.random()*3);
+    let computerChoice;
 
-    if (computerSelection == 0) return "rock";
-    else if(computerSelection == 1) return "paper";
-    else return "scissor";
+    if (computerSelection == 0) computerChoice = "rock";
+    else if(computerSelection == 1) computerChoice =  "paper";
+    else  computerChoice = "scissor";
+
+    console.log(`Computer is: ${computerChoice} `)
+    return computerChoice;
 }
 
 
@@ -36,13 +30,13 @@ function playRound(playerChoice, computerChoice) {
     }
     else if (playerChoice === "rock" && computerChoice === "scissor" || playerChoice === "scissor" && computerChoice === "paper" || playerChoice === "paper" && computerChoice === "rock") {
         playerScore++;
-        return `You win! ${playerChoice} beats ${computerChoice}`;
+        return `You win! ${playerChoice} beats ${computerChoice}.`;
        
     }
 
     else {
         computerScore++;
-        return `You lose! ${computerChoice} beats ${playerChoice}`;
+        return `You lose! ${computerChoice} beats ${playerChoice}.`;
         
     }
     //console.log("Player is " + player);
@@ -50,29 +44,17 @@ function playRound(playerChoice, computerChoice) {
 
 }
 
-function game() {
 
-    let winnerOfFive;
-    let player;
-    let computer;
-    let temporary;
-    for (let i = 0; i <= 4; i++) {
-        player = playerSelection();
-        computer = getComputerChoice();
-        temporary = playRound(player, computer);
-        console.log("Player is " + player + " and computer is " + computer);
-        console.log(temporary);
-        console.log(" " + playerScore + " " + computerScore);
-    }
+const buttons = document.querySelectorAll('button');
+buttons.forEach(element => { element.addEventListener('click', function(){
+    let playerChoice;
+    if(this.id == "rock"){ playerChoice = "rock"};
+    if(this.id == "paper"){ playerChoice = "paper"};
+    if(this.id == "scissor") {playerChoice = "scissor"};
+    console.log(`Player is: ${playerChoice}`);
+   console.log(playRound(playerChoice, getComputerChoice()));
+})
 
-   (playerScore > computerScore)? winnerOfFive = "Player is the": (playerScore < computerScore) ? winnerOfFive = "Computer is the ": winnerOfFive = "Both are the ";
-    console.log ("Computer = " + computerScore);
-    console.log (" Player  = " + playerScore);
-    console.log (`Player = ${playerScore} & Computer = ${computerScore}. ${winnerOfFive} is the winner!`);
-    alert(`Player = ${playerScore} & Computer = ${computerScore}. ${winnerOfFive} winner!`); 
-}
-
-game();
-
+});
 
 
