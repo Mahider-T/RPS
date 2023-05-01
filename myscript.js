@@ -72,9 +72,9 @@ buttons.forEach(element => { element.addEventListener('click', function(){
     newElement.style.color = 'green';
     newElement.style.fontWeight = 'Bold'
     bud.appendChild(newElement);
-    if (counter == 5) {
+    if (playerScore == 5 || computerScore == 5) {
         if(playerScore > computerScore) winner = "Player Won!";
-        else if (computerScore > playerScore) winner = "Computer Won";
+        else if (computerScore > playerScore) winner = "Computer Won!";
         else winner = "Draw!"
         const announce = document.createElement('p');
         announce.textContent = `Player ${playerScore} - ${computerScore} Computer`;
@@ -86,6 +86,8 @@ buttons.forEach(element => { element.addEventListener('click', function(){
         //winner.classList.add("winnerOfFive");
         winnerOfFive.textContent = winner;
         bud.appendChild(winnerOfFive);
+        playerScore = 0;// prepare for a new game
+        computerScore = 0;//prepare for a new game
         
     }
     
